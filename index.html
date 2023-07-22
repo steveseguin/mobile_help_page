@@ -100,40 +100,40 @@ footer {
   
 <h1>Basic native app usage</h1>
 
-This app is very basic compared to the web-version of VDO.Ninja, without two-way chat support currently, however it does support screen sharing.
+This app is very basic compared to the web-version of VDO.Ninja, without two-way chat support currently, however it does support screen sharing.<br>
 
-To share your camera, select the camera from the menu.  The stream ID will be auto generated for you if you leave it blank, or feel free to make up your own.  A stream ID needs to be unique, containing letters and numbers only.
+To share your camera, select the camera from the menu.  The stream ID will be auto generated for you if you leave it blank, or feel free to make up your own.  A stream ID needs to be unique, containing letters and numbers only.<br>
 
-The app will save the stream ID used, so when starting the app again, you can just presume the previous stream ID is still selected.
+The app will save the stream ID used, so when starting the app again, you can just presume the previous stream ID is still selected.<br>
 
-Once you click CONNECT and start your camera, there will be a view link at the top of this page.  Enter this link into your browser to view the video; the link is case-sensitive.
-
+Once you click CONNECT and start your camera, there will be a view link at the top of this page.  Enter this link into your browser to view the video; the link is case-sensitive.<br>
+<br>
   <h2>How to load in OBS</h2>
-The idea notion applies for loading into OBS.
+The idea notion applies for loading into OBS.<br>
 
-Just make sure to click "Control audio via OBS" when adding your link to an OBS browser source.
+Just make sure to click "Control audio via OBS" when adding your link to an OBS browser source.<br>
 
-Setting the width and height of the browser source to 1920x1080 is common.
-
+Setting the width and height of the browser source to 1920x1080 is common.<br>
+<br>
     <h2>How to customize playback</h2>
-You can customize the playback of videos by added parameters to the VDO.Ninja URL links, along with many other aspects. VDO.Ninja is highly flexible in this regard, letting you achieve your desired outcome without needing to code and without additional software.
+You can customize the playback of videos by added parameters to the VDO.Ninja URL links, along with many other aspects. VDO.Ninja is highly flexible in this regard, letting you achieve your desired outcome without needing to code and without additional software.<br>
 
-For example, `https://vdo.ninja/?view=xxxxxxx`, could be amended to `https://vdo.ninja/?view=xxxxxxx&bitrate=500`, which will target a video bitrate of 500kbps.
+For example, `https://vdo.ninja/?view=xxxxxxx`, could be amended to `https://vdo.ninja/?view=xxxxxxx&bitrate=500`, which will target a video bitrate of 500kbps.<br>
 
-Multiple parameters can be appended together by using the separating charater "&".
+Multiple parameters can be appended together by using the separating charater "&".<br>
 
-`http://vdo.ninja/?view=xxxxxxx&bitrate=500&audiobitrate=65`
+`http://vdo.ninja/?view=xxxxxxx&bitrate=500&audiobitrate=65`<br>
 
 
 
   
-`&audiobitrate` is an optional flag that allows us to improve the audio quality of the stream, at the cost of higher network load. This is useful for podcasting setups, where you have a professional audio setup and want VDO.Ninja to unlock that potential.
+`&audiobitrate` is an optional flag that allows us to improve the audio quality of the stream, at the cost of higher network load. This is useful for podcasting setups, where you have a professional audio setup and want VDO.Ninja to unlock that potential.<br>
 
-`&bitrate=500` lets us set the video bitrate to 500-kbps, where the default is 2500-kbps. You can go as high as around 70000-kbps, if your computer and connection can support it. For game streams, you might need to set it as high as 20000-kbps, but for most users, 2500-kbps to 6000-kbps is plenty.
+`&bitrate=500` lets us set the video bitrate to 500-kbps, where the default is 2500-kbps. You can go as high as around 70000-kbps, if your computer and connection can support it. For game streams, you might need to set it as high as 20000-kbps, but for most users, 2500-kbps to 6000-kbps is plenty.<br>
 
 
-Also, you might notice the Stream ID values we are using (ie: aaa, bbb, etc); these can be manually created in advance and reused. Use &push=STREAMID to publish a video and &view=STREAMID to remotely view it. If you don't manually specify a stream ID, VDO.Ninja will generate one for you.
+Also, you might notice the Stream ID values we are using (ie: aaa, bbb, etc); these can be manually created in advance and reused. Use &push=STREAMID to publish a video and &view=STREAMID to remotely view it. If you don't manually specify a stream ID, VDO.Ninja will generate one for you.<br>
 
-To make up a valid stream ID of your own though, choose something with less than 31-characters of length and ensure it's AlpHaNuMerIc-only. A stream ID must also not already be in active use, else you will be provided with an error saying that it is already in use. 
+To make up a valid stream ID of your own though, choose something with less than 31-characters of length and ensure it's AlpHaNuMerIc-only. A stream ID must also not already be in active use, else you will be provided with an error saying that it is already in use. <br>
 
-The main documention, found at https://docs.vdo.ninja/, contains dozens of more options that you can add to the URL to further customize VDO.Ninja to meet your needs.
+The main documention, found at https://docs.vdo.ninja/, contains dozens of more options that you can add to the URL to further customize VDO.Ninja to meet your needs.<br>
