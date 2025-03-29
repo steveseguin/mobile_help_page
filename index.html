@@ -1,179 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<style>
-  /* Reset default margin and padding for all elements */
-  body, h1, h2, h3, p, div, img {
-    margin: 0;
-    padding: 0;
-  }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VDO.Ninja Mobile App Help</title>
+  <style>
+    /* Reset default margin and padding for all elements */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-/* Set a base font and background color for the entire page */
-body {
-  font-family: Arial, sans-serif;
-  background-color: #f2f2f2;
-  color: #333;
-  line-height: 1.6;
-  white-space: pre-line;
-  margin: 0 10px;
-  font-size: max(2em, 10px);
-}
+    /* Set a base font and background color for the entire page */
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: #f2f2f2;
+      color: #333;
+      line-height: 1.5;
+      font-size: 16px;
+      padding: 0 10px;
+    }
 
-/* Style for the header */
-header {
-  background-color: #333;
-  color: #fff;
-  text-align: center;
-  padding: 20px;
-}
+    /* Container for better mobile layout */
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      background-color: #fff;
+      padding: 20px 15px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    }
 
-/* Style for the main content area */
-main {
-  max-width: 800px;
-  margin: 20px auto;
-  padding: 20px;
-  background-color: #fff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
+    /* Style for headings */
+    h1 {
+      font-size: 24px;
+      margin: 10px 0 20px;
+      color: #222;
+      border-bottom: 2px solid #007bff;
+      padding-bottom: 8px;
+    }
 
-/* Style for headings */
-h1, h2, h3 {
-  margin-bottom: 10px;
-  color: #333;
-}
+    h2 {
+      font-size: 20px;
+      margin: 25px 0 15px;
+      color: #333;
+    }
 
-/* Style for paragraphs */
-p {
-  margin-bottom: 20px;
-}
+    h3 {
+      font-size: 18px;
+      margin: 20px 0 10px;
+      color: #444;
+    }
 
-/* Style for images */
-img {
-  max-width: 100%;
-  height: auto;
-  display: block;
-  margin: 20px 0;
-}
+    /* Style for paragraphs */
+    p {
+      margin-bottom: 15px;
+      font-size: 16px;
+    }
 
-/* Style for links */
-a {
-  color: #007bff;
-  text-decoration: none;
-}
+    /* Style for images */
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin: 15px auto;
+      border-radius: 4px;
+      border: 1px solid #ddd;
+    }
 
-a:hover {
-  text-decoration: underline;
-}
+    /* Style for links */
+    a {
+      color: #007bff;
+      text-decoration: none;
+    }
 
-/* Style for buttons */
-button {
-  padding: 10px 20px;
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
+    a:hover {
+      text-decoration: underline;
+    }
 
-button:hover {
-  background-color: #0056b3;
-}
+    /* Style for code blocks */
+    code {
+      background-color: #f5f5f5;
+      padding: 3px 6px;
+      border-radius: 3px;
+      font-family: monospace;
+      font-size: 14px;
+      word-break: break-word;
+    }
 
-/* Style for the footer */
-footer {
-  text-align: center;
-  padding: 10px;
-  background-color: #333;
-  color: #fff;
-}
+    /* Warning message styling */
+    .warning {
+      background-color: #fff3cd;
+      color: #856404;
+      padding: 12px;
+      margin: 15px 0;
+      border-radius: 4px;
+      border-left: 4px solid #ffc107;
+    }
 
-/* Responsive styles */
-@media screen and (max-width: 800px) {
-  main {
-    padding: 10px;
-  }
-  body {
-    font-size: 32px; /* Adjust the font size as needed */
-  }
-}
-</style>
+    /* Section styling */
+    section {
+      margin-bottom: 25px;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 15px 0;
+      margin-top: 30px;
+      border-top: 1px solid #ddd;
+      font-size: 14px;
+      color: #666;
+    }
+
+    /* Responsive styles */
+    @media screen and (max-width: 600px) {
+      body {
+        font-size: 16px;
+      }
+      
+      h1 {
+        font-size: 22px;
+      }
+      
+      h2 {
+        font-size: 18px;
+      }
+      
+      .container {
+        padding: 15px 10px;
+      }
+    }
+  </style>
 </head>
 <body>
+  <div class="container">
+    <header>
+      <h1>VDO.Ninja Mobile App Guide</h1>
+    </header>
+    
+    <main>
+      <section id="intro">
+        <p>This app is a simplified version of the web-based VDO.Ninja. While it lacks two-way chat support and may offer lower video quality, it provides screen sharing capabilities and a straightforward user experience.</p>
+      </section>
 
-  This guide is a work in progress
+      <section id="camera-sharing">
+        <h2>Camera Sharing</h2>
+        <p>To share your camera:</p>
+        <p>1. Select your camera from the menu</p>
+        <p>2. The stream ID will auto-generate if left blank, or create your own using alphanumeric characters</p>
+        <p>3. Your stream ID is saved for future sessions</p>
+        <p>4. Click CONNECT to start your camera</p>
+        <p>5. Use the view link at the top of the page to access your video in a browser (link is case-sensitive)</p>
+      </section>
 
-  
-<h1>Basic native app usage</h1>
+      <section id="screen-sharing">
+        <h2>Screen Sharing</h2>
+        <p>Follow the same steps as camera sharing, but after clicking Connect:</p>
+        <p>1. You'll see Broadcast source options</p>
+        <p>2. Select the VDO.Ninja Broadcast service (usually the last item)</p>
+        <p>3. If not listed, update to the latest iOS version</p>
+        
+        <div id="outofdate" class="warning" style="display:none;">
+          Your iOS version is out of date and screen sharing may not work. Update to iOS 16 or newer to access this functionality.
+        </div>
+        
+        <img src="https://github.com/steveseguin/mobile_help_page/assets/2575698/1ec81565-409e-43ae-b0fc-db2662be4e09" alt="Screen sharing settings menu" />
+      </section>
 
-This app is very basic compared to the web-version of VDO.Ninja, without two-way chat support currently, however it does support screen sharing.<br>
+      <section id="obs-integration">
+        <h2>OBS Integration</h2>
+        <p>To load your stream in OBS:</p>
+        <p>1. Add your view link to an OBS browser source</p>
+        <p>2. Click "Control audio via OBS" when configuring</p>
+        <p>3. Set the browser source to 1920x1080 resolution</p>
+      </section>
 
-To share your camera, select the camera from the menu.  The stream ID will be auto generated for you if you leave it blank, or feel free to make up your own.  A stream ID needs to be unique, containing letters and numbers only.<br>
+      <section id="audio-limitations">
+        <h2>Audio Limitations</h2>
+        <p>USB audio support is limited. Official TRRS 3.5mm to Lightning/USB adapters may work, but many generic audio devices are not supported currently.</p>
+        
+        <h3>Android Users</h3>
+        <p>Firefox on Android supports USB audio when accessing VDO.Ninja via the web. Additionally, there is an alternative app version that supports HDMI / UVC support via USB: <a href="https://drive.google.com/file/d/1L8meslXPEzivocH3wz48abNtJ926hQUr/view?usp=drive_link">Download Android Version</a></p>
+      </section>
 
-The app will save the stream ID used, so when starting the app again, you can just presume the previous stream ID is still selected.<br>
+      <section id="customization">
+        <h2>Customizing Playback</h2>
+        <p>Modify VDO.Ninja URL links with parameters to customize playback without additional software:</p>
+        
+        <h3>Parameter Examples</h3>
+        <p>Basic view link: <code>https://vdo.ninja/?view=xxxxxxx</code></p>
+        <p>With bitrate: <code>https://vdo.ninja/?view=xxxxxxx&bitrate=500</code></p>
+        <p>With multiple parameters: <code>https://vdo.ninja/?view=xxxxxxx&bitrate=500&audiobitrate=65</code></p>
+        
+        <h3>Common Parameters</h3>
+        <p><code>&audiobitrate</code>: Improves audio quality at the cost of bandwidth (great for podcasting)</p>
+        <p><code>&bitrate=500</code>: Sets video bitrate to 500kbps (default is 2500kbps, can go up to 70000kbps)</p>
+        
+        <h3>Stream IDs</h3>
+        <p>Create and reuse stream IDs (like "studio1" or "camera2") with these guidelines:</p>
+        <p>- Use <code>&push=STREAMID</code> to publish video</p>
+        <p>- Use <code>&view=STREAMID</code> to view remotely</p>
+        <p>- Keep IDs under 31 characters and alphanumeric only</p>
+        <p>- Ensure the ID isn't already in use</p>
+        
+        <p>For more options, visit the <a href="https://docs.vdo.ninja/">VDO.Ninja documentation</a>.</p>
+      </section>
+    </main>
+    
+    <footer>
+      <p>Visit <a href="https://vdo.ninja">VDO.Ninja</a> for the full web version</p>
+    </footer>
+  </div>
 
-Once you click CONNECT and start your camera, there will be a view link at the top of this page.  Enter this link into your browser to view the video; the link is case-sensitive.<br>
-
-  <br>
-  <h2>Screen sharing</h2>
-When screen sharing, the same steps as sharing the camera apply, except once you click Connect, you'll be prompted with a set of Broadcast source options.<br>
-
-Select the VDO.Ninja Broadcast service from the list; it often is the last item in the list. If it isn't listed, update your iOS version to the newest release version, as it isn't always supported by older iOS versions.
-
-<h3 id='outofdate' style="display:none;color:red;">Your iOS version is out of date and screen sharing may not work. Update to iOS 16 or newer at a minimum to obtain the functionality.</h3>
-
-<img src="https://github.com/steveseguin/mobile_help_page/assets/2575698/1ec81565-409e-43ae-b0fc-db2662be4e09" style="max-height:70%"/>
-  
-  <h2>How to load in OBS</h2>
-The idea notion applies for loading into OBS.<br>
-
-Just make sure to click "Control audio via OBS" when adding your link to an OBS browser source.<br>
-
-Setting the width and height of the browser source to 1920x1080 is common.<br>
-<br>
-    <h2>How to customize playback</h2>
-You can customize the playback of videos by added parameters to the VDO.Ninja URL links, along with many other aspects. VDO.Ninja is highly flexible in this regard, letting you achieve your desired outcome without needing to code and without additional software.<br>
-
-For example, `https://vdo.ninja/?view=xxxxxxx`, could be amended to `https://vdo.ninja/?view=xxxxxxx&bitrate=500`, which will target a video bitrate of 500kbps.<br>
-
-Multiple parameters can be appended together by using the separating charater "&".<br>
-
-`http://vdo.ninja/?view=xxxxxxx&bitrate=500&audiobitrate=65`<br>
-
-
-  
-`&audiobitrate` is an optional flag that allows us to improve the audio quality of the stream, at the cost of higher network load. This is useful for podcasting setups, where you have a professional audio setup and want VDO.Ninja to unlock that potential.<br>
-
-`&bitrate=500` lets us set the video bitrate to 500-kbps, where the default is 2500-kbps. You can go as high as around 70000-kbps, if your computer and connection can support it. For game streams, you might need to set it as high as 20000-kbps, but for most users, 2500-kbps to 6000-kbps is plenty.<br>
-
-
-Also, you might notice the Stream ID values we are using (ie: aaa, bbb, etc); these can be manually created in advance and reused. Use &push=STREAMID to publish a video and &view=STREAMID to remotely view it. If you don't manually specify a stream ID, VDO.Ninja will generate one for you.<br>
-
-To make up a valid stream ID of your own though, choose something with less than 31-characters of length and ensure it's AlpHaNuMerIc-only. A stream ID must also not already be in active use, else you will be provided with an error saying that it is already in use. <br>
-
-The main documention, found at https://docs.vdo.ninja/, contains dozens of more options that you can add to the URL to further customize VDO.Ninja to meet your needs.<br>
-
-<script>
+  <script>
   function safariVersion() {
-  	var ver = 0;
-  	try {
-  		ver = navigator.appVersion.split("Version/");
-  		if (ver.length > 1) {
-  			ver = ver[1].split(" Safari");
-  		}
-  		if (ver.length > 1) {
-  			ver = ver[0].split(".");
-  		}
-  		if (ver.length > 1) {
-  			ver = parseInt(ver[0]);
-  		} else {
-  			ver = 0;
-  		}
-  	} catch (e) {
-  		return 0;
-  	}
-  	return ver;
-}
-if (safariVersion() && (safariVersion()<16)){
-  document.getElementById("outofdate").style.display = "block";
-}
-</script>
+    var ver = 0;
+    try {
+      ver = navigator.appVersion.split("Version/");
+      if (ver.length > 1) {
+        ver = ver[1].split(" Safari");
+      }
+      if (ver.length > 1) {
+        ver = ver[0].split(".");
+      }
+      if (ver.length > 1) {
+        ver = parseInt(ver[0]);
+      } else {
+        ver = 0;
+      }
+    } catch (e) {
+      return 0;
+    }
+    return ver;
+  }
+  
+  if (safariVersion() && (safariVersion() < 16)) {
+    document.getElementById("outofdate").style.display = "block";
+  }
+  </script>
 </body>
 </html>
