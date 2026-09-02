@@ -2,6 +2,5 @@
 
 Mobile-first help page used by the VDO.Ninja Android and iOS apps.
 
-The screenshots in `assets/` are captured from the Android app. Keep the written
-instructions platform-neutral unless a section is explicitly labelled Android or
-iOS.
+Keep the basic publishing path short and visible. Platform-specific and advanced
+features should be clearly labelled and progressively disclosed.

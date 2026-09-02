@@ -1,390 +1,523 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="theme-color" content="#14283a">
-  <meta name="description" content="A quick guide to publishing a camera, microphone, or screen with the VDO.Ninja mobile app.">
-  <title>VDO.Ninja Mobile App Guide</title>
+  <meta name="theme-color" content="#ffffff">
+  <meta name="description" content="How to publish video, audio, and screen sharing with the VDO.Ninja mobile app.">
+  <title>VDO.Ninja App Guide</title>
   <style>
     :root {
-      color-scheme: light;
-      --navy: #14283a;
-      --navy-soft: #29455e;
-      --blue: #168eea;
-      --blue-soft: #eaf5ff;
-      --ink: #182634;
-      --muted: #5c6b78;
-      --line: #dbe3e9;
-      --surface: #fff;
-      --page: #edf2f5;
-      --green: #18794e;
-      --green-soft: #eaf8f1;
-      --amber: #8a5700;
-      --amber-soft: #fff5dc;
-      --radius: 18px;
+      color-scheme: light dark;
+      --background: #ffffff;
+      --surface: #f5f7f9;
+      --text: #17212b;
+      --muted: #4f5f6d;
+      --border: #d7dfe5;
+      --accent: #0877c9;
+      --success: #167044;
     }
 
     * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
+
+    html {
+      font-size: 17px;
+      -webkit-text-size-adjust: 100%;
+    }
 
     body {
       margin: 0;
-      background: var(--page);
-      color: var(--ink);
-      font: 16px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: var(--background);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.55;
       -webkit-font-smoothing: antialiased;
     }
 
-    a { color: #0869b5; text-underline-offset: 3px; }
-    a:focus-visible, summary:focus-visible {
-      outline: 3px solid rgba(22, 142, 234, .35);
+    a {
+      color: var(--accent);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    a:focus-visible,
+    summary:focus-visible {
+      outline: 3px solid var(--accent);
       outline-offset: 3px;
-      border-radius: 6px;
+      border-radius: 4px;
     }
 
-    .site-header {
-      padding: max(28px, env(safe-area-inset-top)) 20px 26px;
-      color: #fff;
-      background:
-        radial-gradient(circle at 92% -10%, rgba(22, 142, 234, .65), transparent 42%),
-        linear-gradient(145deg, #102335, var(--navy-soft));
+    .skip-link {
+      position: absolute;
+      top: 8px;
+      left: 8px;
+      padding: 10px 12px;
+      background: var(--background);
+      transform: translateY(-160%);
+      z-index: 10;
     }
 
-    .header-inner, main { width: min(100%, 820px); margin-inline: auto; }
-    .eyebrow {
-      margin: 0 0 8px;
-      color: #8ed0ff;
-      font-size: .76rem;
-      font-weight: 800;
-      letter-spacing: .12em;
-      text-transform: uppercase;
+    .skip-link:focus { transform: translateY(0); }
+
+    header,
+    main,
+    footer {
+      width: min(100%, 44rem);
+      margin-inline: auto;
     }
 
-    h1, h2, h3, p { margin-top: 0; }
+    header {
+      padding: max(18px, env(safe-area-inset-top)) 18px 14px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    h1,
+    h2,
+    h3,
+    p { margin-top: 0; }
+
     h1 {
-      max-width: 620px;
-      margin-bottom: 10px;
-      font-size: clamp(2rem, 9vw, 3.25rem);
-      line-height: 1.05;
-      letter-spacing: -.035em;
-    }
-    h2 {
-      margin-bottom: 9px;
-      font-size: clamp(1.45rem, 6vw, 2rem);
+      margin-bottom: 3px;
+      font-size: 1.65rem;
       line-height: 1.2;
       letter-spacing: -.02em;
     }
-    h3 { margin-bottom: 7px; font-size: 1.08rem; line-height: 1.3; }
-    .intro { max-width: 650px; margin: 0; color: #dceaf4; font-size: 1.06rem; }
 
-    .quick-nav {
+    header p {
+      margin: 0;
+      color: var(--muted);
+      font-size: .95rem;
+    }
+
+    main { padding: 0 18px 30px; }
+
+    section {
+      padding: 24px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    section:last-child { border-bottom: 0; }
+
+    h2 {
       display: flex;
-      gap: 8px;
-      padding: 14px 16px;
-      overflow-x: auto;
-      position: sticky;
-      top: 0;
-      z-index: 10;
-      background: var(--surface);
-      border-bottom: 1px solid var(--line);
-      scrollbar-width: none;
-    }
-    .quick-nav::-webkit-scrollbar { display: none; }
-    .quick-nav a {
-      flex: 0 0 auto;
-      padding: 8px 12px;
-      color: var(--ink);
-      background: #f3f6f8;
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      font-size: .88rem;
-      font-weight: 700;
-      text-decoration: none;
+      gap: 10px;
+      align-items: center;
+      margin-bottom: 14px;
+      font-size: 1.35rem;
+      line-height: 1.25;
     }
 
-    main { padding: 22px 14px 44px; }
-    section { margin-bottom: 20px; scroll-margin-top: 76px; }
-    .card {
-      padding: 20px;
-      background: var(--surface);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      box-shadow: 0 8px 24px rgba(20, 40, 58, .06);
+    h3 {
+      margin: 18px 0 6px;
+      font-size: 1rem;
     }
-    .section-lead { margin-bottom: 18px; color: var(--muted); }
+
+    .icon {
+      width: 1.2em;
+      height: 1.2em;
+      flex: 0 0 auto;
+      color: var(--accent);
+      stroke: currentColor;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      fill: none;
+    }
 
     .steps {
       display: grid;
-      gap: 14px;
+      gap: 13px;
       margin: 0;
       padding: 0;
       list-style: none;
       counter-reset: steps;
     }
+
     .steps li {
-      min-height: 42px;
-      padding-left: 54px;
-      position: relative;
+      display: grid;
+      grid-template-columns: 30px 1fr;
+      gap: 10px;
+      align-items: start;
       counter-increment: steps;
     }
+
     .steps li::before {
       content: counter(steps);
       display: grid;
-      width: 36px;
-      height: 36px;
+      width: 28px;
+      height: 28px;
       place-items: center;
-      position: absolute;
-      top: 0;
-      left: 0;
       color: #fff;
-      background: var(--blue);
+      background: var(--accent);
       border-radius: 50%;
-      font-weight: 800;
+      font-size: .82rem;
+      font-weight: 700;
     }
-    .steps strong { display: block; margin-bottom: 1px; }
 
-    .tip, .note, .warning {
-      padding: 13px 14px;
-      border-radius: 12px;
+    .steps strong { display: block; }
+
+    .source-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+    }
+
+    .source {
+      min-width: 0;
+      padding: 13px 8px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      text-align: center;
+    }
+
+    .source .icon {
+      display: block;
+      width: 26px;
+      height: 26px;
+      margin: 0 auto 7px;
+    }
+
+    .source strong,
+    .source span { display: block; }
+
+    .source strong { font-size: .95rem; }
+    .source span { margin-top: 2px; color: var(--muted); font-size: .85rem; line-height: 1.35; }
+
+    .plain-list {
+      margin: 0;
+      padding-left: 1.2rem;
+    }
+
+    .plain-list li + li { margin-top: 8px; }
+
+    .compact-list {
+      display: grid;
+      gap: 10px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .compact-list li {
+      display: grid;
+      grid-template-columns: 22px 1fr;
+      gap: 9px;
+    }
+
+    .compact-list .icon {
+      width: 20px;
+      height: 20px;
+      margin-top: 3px;
+    }
+
+    .panel {
+      padding: 15px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+    }
+
+    .panel > :last-child { margin-bottom: 0; }
+
+    .more-link {
+      display: inline-block;
+      margin-top: 13px;
+      font-size: .95rem;
+    }
+
+    .platform-table-wrap {
+      margin: 0;
+      padding: 0;
+      overflow-x: auto;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+    }
+
+    table {
+      width: 100%;
+      min-width: 330px;
+      border-collapse: collapse;
       font-size: .94rem;
+      line-height: 1.35;
     }
-    .tip { margin-top: 18px; color: var(--green); background: var(--green-soft); border-left: 4px solid #35a56f; }
-    .note { margin: 14px 0 0; color: #155a8c; background: var(--blue-soft); border-left: 4px solid var(--blue); }
-    .warning { margin: 14px 0 0; color: var(--amber); background: var(--amber-soft); border-left: 4px solid #e0a122; }
 
-    .media-layout { display: grid; gap: 22px; align-items: start; }
-    figure { margin: 0; }
-    .phone-shot {
-      width: min(100%, 300px);
-      margin-inline: auto;
-      overflow: hidden;
-      background: var(--navy);
-      border: 6px solid #14212c;
-      border-radius: 26px;
-      box-shadow: 0 16px 28px rgba(20, 40, 58, .18);
+    th,
+    td {
+      padding: 10px 9px;
+      border-bottom: 1px solid var(--border);
+      text-align: left;
+      vertical-align: top;
     }
-    .phone-shot img { display: block; width: 100%; height: auto; }
-    .phone-shot.room-focus { aspect-ratio: 4 / 5; }
-    .phone-shot.room-focus img { height: 100%; object-fit: cover; object-position: 50% 88%; }
-    figcaption { max-width: 320px; margin: 10px auto 0; color: var(--muted); font-size: .82rem; text-align: center; }
 
-    .feature-grid, .mode-grid { display: grid; gap: 10px; margin: 17px 0; }
-    .feature, .mode { padding: 14px; background: #f7f9fb; border: 1px solid var(--line); border-radius: 12px; }
-    .feature p, .mode p { margin: 4px 0 0; color: var(--muted); font-size: .92rem; }
-    .mini-steps { margin: 12px 0 0; padding-left: 1.25rem; }
-    .mini-steps li + li { margin-top: 8px; }
+    th { background: var(--surface); }
+    tr:last-child td { border-bottom: 0; }
+    th:not(:first-child), td:not(:first-child) { text-align: center; }
+    td:first-child { font-weight: 650; }
+    .yes { color: var(--success); font-weight: 700; }
 
-    details { margin-top: 10px; background: var(--surface); border: 1px solid var(--line); border-radius: 14px; }
-    summary { padding: 16px 48px 16px 16px; position: relative; cursor: pointer; font-weight: 750; list-style: none; }
-    summary::-webkit-details-marker { display: none; }
-    summary::after { content: "+"; position: absolute; top: 11px; right: 16px; color: var(--blue); font-size: 1.55rem; font-weight: 400; }
-    details[open] summary::after { content: "−"; }
-    .details-body { padding: 0 16px 16px; border-top: 1px solid var(--line); }
-    .details-body > :first-child { margin-top: 14px; }
+    details {
+      margin-top: 10px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+    }
+
+    summary {
+      min-height: 50px;
+      padding: 12px 14px;
+      cursor: pointer;
+      font-weight: 700;
+    }
+
+    .details-body {
+      padding: 13px 14px 15px;
+      border-top: 1px solid var(--border);
+    }
+
     .details-body > :last-child { margin-bottom: 0; }
 
     code {
-      padding: 2px 5px;
-      background: #edf2f5;
-      border-radius: 5px;
+      padding: 2px 4px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 4px;
       font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-      font-size: .88em;
+      font-size: .86em;
       overflow-wrap: anywhere;
     }
 
+    .muted { color: var(--muted); }
+    .muted small { font-size: .9rem; }
+
     footer {
-      padding: 24px 20px calc(28px + env(safe-area-inset-bottom));
-      color: #dceaf4;
-      background: var(--navy);
-      text-align: center;
-    }
-    footer p { margin-bottom: 8px; }
-    footer a { color: #8ed0ff; }
-
-    @media (min-width: 680px) {
-      main { padding: 30px 20px 56px; }
-      .card { padding: 28px; }
-      .media-layout { grid-template-columns: minmax(0, 1fr) 260px; }
-      .media-layout.reverse { grid-template-columns: 250px minmax(0, 1fr); }
-      .media-layout.reverse .copy { grid-column: 2; }
-      .media-layout.reverse figure { grid-column: 1; grid-row: 1; }
-      .feature-grid, .mode-grid { grid-template-columns: repeat(3, 1fr); }
+      padding: 20px 18px calc(24px + env(safe-area-inset-bottom));
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+      font-size: .9rem;
     }
 
-    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+    footer p { margin-bottom: 7px; }
+
+    @media (max-width: 350px) {
+      html { font-size: 16px; }
+      .source-grid { grid-template-columns: 1fr; }
+      .source { display: grid; grid-template-columns: 28px 1fr; column-gap: 10px; text-align: left; }
+      .source .icon { grid-row: 1 / 3; margin: 2px 0 0; }
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --background: #12171c;
+        --surface: #1b232a;
+        --text: #edf3f7;
+        --muted: #b4c0ca;
+        --border: #3c4852;
+        --accent: #68b9f3;
+        --success: #74d6a7;
+      }
+
+      .steps li::before { color: #10202c; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; }
+    }
   </style>
 </head>
 <body>
-  <header class="site-header">
-    <div class="header-inner">
-      <p class="eyebrow">VDO.Ninja Publisher</p>
-      <h1>Mobile app guide</h1>
-      <p class="intro">Publish your phone camera, an Android USB camera, your screen, or just a microphone—then share a link with your viewers.</p>
-    </div>
+  <a class="skip-link" href="#main">Skip to guide</a>
+
+  <header>
+    <h1>VDO.Ninja app guide</h1>
+    <p>Camera, microphone, screen sharing, and streaming tools</p>
   </header>
 
-  <nav class="quick-nav" aria-label="Guide sections">
-    <a href="#quick-start">Quick start</a>
-    <a href="#camera-audio">Camera &amp; audio</a>
-    <a href="#screen-sharing">Screen sharing</a>
-    <a href="#usb">USB devices</a>
-    <a href="#troubleshooting">Help</a>
-    <a href="#more-features">More features</a>
-  </nav>
-
-  <main>
-    <section id="quick-start" class="card">
-      <div class="media-layout">
-        <div class="copy">
-          <h2>Go live in four steps</h2>
-          <p class="section-lead">A viewer only needs a modern browser. They do not need to install the app.</p>
-          <ol class="steps">
-            <li><strong>Choose what to share.</strong>Tap a camera, <b>SCREEN</b>, or <b>MICROPHONE ONLY</b>.</li>
-            <li><strong>Check Publishing Settings.</strong>Leave Stream ID empty for a random ID, or enter a memorable one. Select your microphone if needed.</li>
-            <li><strong>Tap CONNECT.</strong>Allow camera, microphone, screen-capture, or USB permissions when asked.</li>
-            <li><strong>Share the Viewer Link.</strong>Use the share button. Keep the app running while you publish.</li>
-          </ol>
-          <div class="tip"><strong>For most streams, that is all you need.</strong> Room name, password, and Advanced Settings are optional.</div>
-        </div>
-        <figure>
-          <a href="assets/share-source-menu.png" aria-label="Open the full-size source menu screenshot">
-            <div class="phone-shot"><img src="assets/share-source-menu.png" alt="VDO.Ninja app source menu with screen, camera, and microphone choices" loading="lazy"></div>
-          </a>
-          <figcaption>Choose a source to open Publishing Settings.</figcaption>
-        </figure>
-      </div>
-    </section>
-
-    <section id="camera-audio" class="card">
-      <h2>Camera and microphone basics</h2>
-      <div class="feature-grid">
-        <div class="feature"><strong>Choose a camera</strong><p>Use Back Camera for filming away from you, Front Camera for self-view, or Ultra-Wide when available.</p></div>
-        <div class="feature"><strong>Choose a microphone</strong><p>In Publishing Settings, select the phone mic, headset, or connected USB audio input you want to send.</p></div>
-        <div class="feature"><strong>Share the link</strong><p>Viewer links and Stream IDs are case-sensitive. Use the share button to avoid typing mistakes.</p></div>
-      </div>
-      <p>While live, use the microphone and camera buttons to mute tracks, the link button to reopen the Viewer Link, and the red phone button to end the stream. The More menu contains supported options such as camera controls, audio settings, Picture in Picture, torch, and local recording.</p>
-    </section>
-
-    <section id="screen-sharing" class="card">
-      <h2>Share your screen</h2>
-      <p>Tap <strong>SCREEN</strong>, review Publishing Settings, then tap <strong>CONNECT</strong>.</p>
-      <details>
-        <summary>iPhone or iPad steps</summary>
-        <div class="details-body">
-          <ol class="mini-steps">
-            <li>In the iOS broadcast picker, select the <strong>VDO.Ninja Broadcast</strong> service.</li>
-            <li>Start the broadcast and return to the content you want to share.</li>
-            <li>Use iOS 16 or newer. Keep Low Power Mode off if broadcasting stops unexpectedly.</li>
-          </ol>
-        </div>
-      </details>
-      <details>
-        <summary>Android steps</summary>
-        <div class="details-body">
-          <p>Approve Android's screen-capture confirmation. If system audio or microphone narration is enabled in Publishing Settings, also grant the requested audio permissions.</p>
-        </div>
-      </details>
-    </section>
-
-    <section id="usb" class="card">
-      <h2>Android USB camera and audio</h2>
-      <p class="section-lead">The Android app supports many USB-C UVC cameras and compatible USB audio devices. USB camera capture is not available in the iOS app.</p>
-      <ol class="mini-steps">
-        <li>Connect the UVC camera to the Android phone, using a powered hub if the camera needs more power.</li>
-        <li>Accept the Android USB permission prompt. A <strong>USB CAMERA</strong> option should appear automatically on the app home screen.</li>
-        <li>Tap <strong>USB CAMERA</strong>. In Publishing Settings, choose the USB microphone if it appears and you want to use it.</li>
-        <li>Tap <strong>CONNECT</strong> and share the Viewer Link.</li>
+  <main id="main">
+    <section aria-labelledby="start-heading">
+      <h2 id="start-heading">
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 4h14v16H5zM9 8l7 4-7 4z"/></svg>
+        Start a stream
+      </h2>
+      <ol class="steps">
+        <li><span><strong>Choose a source</strong>Tap Camera, Screen, or Microphone Only.</span></li>
+        <li><span><strong>Check Publishing Settings</strong>A Stream ID is created automatically if you leave it empty.</span></li>
+        <li><span><strong>Tap CONNECT</strong>Allow the requested camera, microphone, screen, or USB permissions.</span></li>
+        <li><span><strong>Share the Viewer Link</strong>The viewer opens it in a browser; no app is required.</span></li>
       </ol>
-      <div class="note">If the USB option does not appear, unplug and reconnect the device, accept the permission prompt, and wait a few seconds for the device list to refresh.</div>
     </section>
 
-    <section id="troubleshooting" class="card">
-      <h2>Quick fixes</h2>
-      <details open>
+    <section aria-labelledby="source-heading">
+      <h2 id="source-heading">
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M8 12h8M12 8v8"/></svg>
+        Choose what to share
+      </h2>
+      <div class="source-grid">
+        <div class="source">
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="6" width="13" height="12" rx="2"/><path d="m16 10 5-3v10l-5-3z"/></svg>
+          <strong>Camera</strong>
+          <span>Front, back, or ultra-wide</span>
+        </div>
+        <div class="source">
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+          <strong>Screen</strong>
+          <span>Phone display and supported audio</span>
+        </div>
+        <div class="source">
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="3" width="6" height="12" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3M9 21h6"/></svg>
+          <strong>Microphone</strong>
+          <span>Audio-only publishing</span>
+        </div>
+      </div>
+    </section>
+
+    <section aria-labelledby="quality-heading">
+      <h2 id="quality-heading">
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 18v2M9 14v6M14 10v10M19 5v15"/></svg>
+        Better quality for IRL streaming
+      </h2>
+      <div class="panel">
+        <ul class="compact-list">
+          <li><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m5 12 4 4L19 6"/></svg><span><strong>Pick the right mode:</strong> 1080p30 for detail; 720p60 for smoother motion. Use 1080p60 only on a capable, cool phone.</span></li>
+          <li><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 18v2M9 14v6M14 10v10M19 5v15"/></svg><span><strong>Protect the connection:</strong> strong Wi-Fi or cellular signal matters more than a high resolution setting.</span></li>
+          <li><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M8 4h8M9 4v4l-3 7a4 4 0 0 0 4 5h4a4 4 0 0 0 4-5l-3-7V4"/></svg><span><strong>Watch heat and power:</strong> shade the phone, allow airflow, close other apps, and lower quality if frames begin to drop.</span></li>
+          <li><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M10 13a5 5 0 0 0 7.5.5l2-2a5 5 0 0 0-7-7l-1.1 1M14 11a5 5 0 0 0-7.5-.5l-2 2a5 5 0 0 0 7 7l1.1-1"/></svg><span><strong>Viewer controls bitrate:</strong> try adding <code>&amp;videobitrate=6000</code> to the Viewer Link when the network can sustain it.</span></li>
+        </ul>
+      </div>
+      <a class="more-link" href="https://docs.vdo.ninja/guides/improving-quality-of-the-native-app">More native-app quality tips</a>
+    </section>
+
+    <section aria-labelledby="platform-heading">
+      <h2 id="platform-heading">
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M9 18h6"/></svg>
+        Android and iOS differences
+      </h2>
+      <section class="platform-table-wrap" tabindex="0" aria-label="Scrollable platform feature comparison">
+        <table>
+          <thead><tr><th scope="col">Feature</th><th scope="col">Android</th><th scope="col">iPhone / iPad</th></tr></thead>
+          <tbody>
+            <tr><td>Phone cameras</td><td class="yes">Yes</td><td class="yes">Yes</td></tr>
+            <tr><td>Screen sharing</td><td class="yes">Yes</td><td class="yes">Yes</td></tr>
+            <tr><td>USB / UVC video</td><td class="yes">Yes</td><td>No</td></tr>
+            <tr><td>System / app audio</td><td>Android 10+ toggle</td><td>Via ReplayKit*</td></tr>
+            <tr><td>External microphone</td><td>Device dependent</td><td>Device dependent</td></tr>
+          </tbody>
+        </table>
+      </section>
+      <p class="muted"><small>*Some apps or protected content may not provide audio to screen capture.</small></p>
+
+      <details>
+        <summary>Screen sharing steps</summary>
+        <div class="details-body">
+          <h3>Android</h3>
+          <ol class="plain-list">
+            <li>Tap <strong>SCREEN</strong>.</li>
+            <li>For device sound, open <strong>Advanced Settings</strong> and enable <strong>Capture System Audio</strong> (Android 10+).</li>
+            <li>Tap <strong>CONNECT</strong> and approve Android's screen-capture prompt.</li>
+          </ol>
+          <h3>iPhone or iPad</h3>
+          <ol class="plain-list">
+            <li>Tap <strong>SCREEN</strong>, then <strong>CONNECT</strong>.</li>
+            <li>Choose <strong>VDO.Ninja Broadcast</strong> in the iOS broadcast picker.</li>
+            <li>Start the broadcast. ReplayKit supplies app audio when the shared app permits it.</li>
+          </ol>
+        </div>
+      </details>
+
+      <details>
+        <summary>Android USB camera and microphone</summary>
+        <div class="details-body">
+          <ol class="plain-list">
+            <li>Connect the UVC camera before publishing. Use a powered hub if it needs more power.</li>
+            <li>Accept the Android USB permission prompt and wait for <strong>USB CAMERA</strong> to appear.</li>
+            <li>Tap <strong>USB CAMERA</strong>. Choose the USB microphone in Publishing Settings if needed.</li>
+          </ol>
+          <p>If the option does not appear, reconnect the device, accept permission again, and wait a few seconds.</p>
+        </div>
+      </details>
+    </section>
+
+    <section aria-labelledby="help-heading">
+      <h2 id="help-heading">
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M9.8 9a2.3 2.3 0 1 1 3.3 2.1c-.8.4-1.1.9-1.1 1.9M12 17h.01"/></svg>
+        If something goes wrong
+      </h2>
+      <details>
         <summary>The stream stops or will not start</summary>
         <div class="details-body">
-          <ul class="mini-steps">
-            <li>Grant every requested camera, microphone, screen, or USB permission.</li>
-            <li>Turn off Low Power Mode or battery optimization for the app.</li>
-            <li>Try a lower video-quality setting and a stable Wi-Fi or wired connection.</li>
-            <li>On iOS, use Picture in Picture when switching to another app.</li>
+          <ul class="plain-list">
+            <li>Grant every requested permission.</li>
+            <li>Disable Low Power Mode or battery optimization.</li>
+            <li>Lower video quality and try a stronger network.</li>
+            <li>On iOS, use Picture in Picture when leaving the app.</li>
           </ul>
         </div>
       </details>
       <details>
         <summary>The viewer cannot see or hear the stream</summary>
         <div class="details-body">
-          <ul class="mini-steps">
-            <li>Send the Viewer Link with the share button; IDs and room names are case-sensitive.</li>
-            <li>Confirm your live microphone or camera button is not muted.</li>
-            <li>Ask the viewer to allow playback and check their device volume.</li>
-            <li>Try a different network if a firewall or restrictive Wi-Fi blocks WebRTC.</li>
+          <ul class="plain-list">
+            <li>Share the link instead of retyping it; Stream IDs are case-sensitive.</li>
+            <li>Check the live camera and microphone buttons.</li>
+            <li>Ask the viewer to allow playback and check their volume.</li>
+            <li>Try another network if restrictive Wi-Fi blocks WebRTC.</li>
           </ul>
         </div>
       </details>
     </section>
 
-    <section id="more-features" class="card">
-      <h2>Optional features</h2>
-      <p class="section-lead">Open these only when you need more than a basic one-way stream.</p>
+    <section aria-labelledby="more-heading">
+      <h2 id="more-heading">
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="5" cy="12" r="1" fill="currentColor" stroke="none"/><circle cx="12" cy="12" r="1" fill="currentColor" stroke="none"/><circle cx="19" cy="12" r="1" fill="currentColor" stroke="none"/></svg>
+        Optional features
+      </h2>
 
-      <details id="room-audio">
+      <details>
+        <summary>Social Stream Ninja chat and controls</summary>
+        <div class="details-body">
+          <p>Show live chat in the app and remotely control supported Social Stream features while publishing.</p>
+          <ol class="plain-list">
+            <li>Get the session ID from your running Social Stream Ninja app or browser extension.</li>
+            <li>In Publishing Settings, enable <strong>Advanced Settings → Social Stream Ninja Integration</strong>.</li>
+            <li>Enable Social Stream and enter the same session ID.</li>
+            <li>Choose <strong>Peer-to-Peer</strong> for low latency. If that Social Stream session uses a transport password, enter the same one.</li>
+            <li>Alternatively, choose <strong>Server</strong>. In Social Stream Ninja, enable both remote API control and sending chat messages to the API server under <strong>Global settings → Mechanics</strong>.</li>
+          </ol>
+          <p>While live, the chat button shows or hides messages. Open <strong>More → Social Stream Controls</strong> for available overlay, chat, timer, and source controls.</p>
+          <a href="https://docs.vdo.ninja/steves-helper-apps/social-stream-ninja">Social Stream Ninja guide</a>
+        </div>
+      </details>
+
+      <details>
         <summary>Talk with guests using Room Audio</summary>
         <div class="details-body">
-          <div class="media-layout reverse">
-            <div class="copy">
-              <p>Room Audio controls whose audio the app plays back to you while your outgoing camera or microphone continues normally.</p>
-              <h3>For a group conversation</h3>
-              <ol class="mini-steps">
-                <li>Enter the same <strong>Room name</strong> the other participants will use.</li>
-                <li>Turn on <strong>Advanced Settings</strong>. Under <strong>Incoming Audio</strong>, choose <strong>Everyone in room</strong>.</li>
-                <li>Leave <strong>Enable Echo Cancellation</strong> on, especially when using the phone speaker.</li>
-                <li>Tap <strong>CONNECT</strong>. Guests can open <code>https://vdo.ninja/?room=YOUR_ROOM_NAME</code>, join the room, and allow their microphone.</li>
-              </ol>
-              <div class="mode-grid">
-                <div class="mode"><strong>Off</strong><p>Publish only. You will not hear remote audio.</p></div>
-                <div class="mode"><strong>One stream</strong><p>Hear one publisher by entering their Remote Stream ID.</p></div>
-                <div class="mode"><strong>Everyone in room</strong><p>Hear all active publishers in your room.</p></div>
-              </div>
-              <div class="note"><strong>Need silence?</strong> While live, tap the <b>Room audio</b> or <b>Listening</b> badge to mute or unmute all incoming audio. Its number shows how many room audio streams are connected.</div>
-              <div class="warning"><strong>Avoid feedback:</strong> use headphones when possible. If the app warns that Unprocessed Audio disables echo cancellation, tap <b>Enable conversational audio</b>.</div>
-            </div>
-            <figure>
-              <a href="assets/room-audio-settings.png" aria-label="Open the full-size Room Audio settings screenshot">
-                <div class="phone-shot room-focus"><img src="assets/room-audio-settings.png" alt="Incoming Audio settings set to Everyone in room with echo cancellation enabled" loading="lazy"></div>
-              </a>
-              <figcaption>Room Audio is inside Advanced Settings. Tap the image for the full screen.</figcaption>
-            </figure>
-          </div>
-        </div>
-      </details>
-
-      <details>
-        <summary>Use the stream in OBS</summary>
-        <div class="details-body">
-          <ol class="mini-steps">
-            <li>Add the Viewer Link as an OBS Browser Source.</li>
-            <li>Enable <strong>Control audio via OBS</strong> in the Browser Source properties.</li>
-            <li>Set the source size to match your production, commonly 1920×1080.</li>
+          <ol class="plain-list">
+            <li>Enter a <strong>Room name</strong>.</li>
+            <li>Enable <strong>Advanced Settings → Incoming Audio</strong>.</li>
+            <li>Choose <strong>One stream</strong> or <strong>Everyone in room</strong>.</li>
+            <li>Keep Echo Cancellation on when using speakers. Headphones are better.</li>
           </ol>
+          <p>Guests who need to speak can join <code>https://vdo.ninja/?room=YOUR_ROOM_NAME</code> and publish their microphone. A normal Viewer Link is watch-only.</p>
+          <p>Tap the live <strong>Room audio</strong> or <strong>Listening</strong> badge to mute or unmute all incoming audio.</p>
         </div>
       </details>
 
       <details>
-        <summary>Viewer-link options</summary>
+        <summary>OBS and advanced viewer options</summary>
         <div class="details-body">
-          <p>Add URL parameters with <code>&amp;</code>. For example, <code>&amp;bitrate=500</code> requests a 500-kbps video bitrate and <code>&amp;audiobitrate=65</code> requests higher-quality audio.</p>
-          <p>Stream IDs and room names are case-sensitive. Use long, hard-to-guess names for private sessions.</p>
-          <p>See the <a href="https://docs.vdo.ninja/">complete VDO.Ninja documentation</a> for more parameters.</p>
+          <ul class="plain-list">
+            <li>Add the Viewer Link as an OBS Browser Source.</li>
+            <li>Enable <strong>Control audio via OBS</strong> in its properties.</li>
+            <li>Match the Browser Source size to the stream, such as 1920×1080.</li>
+          </ul>
+          <p>See the <a href="https://docs.vdo.ninja/">VDO.Ninja documentation</a> for bitrate, codec, room, and other URL options.</p>
         </div>
       </details>
     </section>
   </main>
 
   <footer>
-    <p><strong>Need more help?</strong> Free support is available on <a href="https://discord.vdo.ninja">Discord</a>.</p>
-    <p>For the full browser experience, visit <a href="https://vdo.ninja">vdo.ninja</a>.</p>
+    <p><strong>Need help?</strong> Visit the <a href="https://discord.vdo.ninja">VDO.Ninja Discord</a>.</p>
+    <p>Open <a href="https://vdo.ninja">vdo.ninja</a> for the full browser version.</p>
   </footer>
 </body>
 </html>
