@@ -2,253 +2,389 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>VDO.Ninja Mobile App Help</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#14283a">
+  <meta name="description" content="A quick guide to publishing a camera, microphone, or screen with the VDO.Ninja mobile app.">
+  <title>VDO.Ninja Mobile App Guide</title>
   <style>
-    /* Reset default margin and padding for all elements */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+    :root {
+      color-scheme: light;
+      --navy: #14283a;
+      --navy-soft: #29455e;
+      --blue: #168eea;
+      --blue-soft: #eaf5ff;
+      --ink: #182634;
+      --muted: #5c6b78;
+      --line: #dbe3e9;
+      --surface: #fff;
+      --page: #edf2f5;
+      --green: #18794e;
+      --green-soft: #eaf8f1;
+      --amber: #8a5700;
+      --amber-soft: #fff5dc;
+      --radius: 18px;
     }
 
-    /* Set a base font and background color for the entire page */
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      background-color: #f2f2f2;
-      color: #333;
-      line-height: 1.5;
-      font-size: 16px;
-      padding: 0 10px;
+      margin: 0;
+      background: var(--page);
+      color: var(--ink);
+      font: 16px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      -webkit-font-smoothing: antialiased;
     }
 
-    /* Container for better mobile layout */
-    .container {
-      max-width: 800px;
-      margin: 0 auto;
-      background-color: #fff;
-      padding: 20px 15px;
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    a { color: #0869b5; text-underline-offset: 3px; }
+    a:focus-visible, summary:focus-visible {
+      outline: 3px solid rgba(22, 142, 234, .35);
+      outline-offset: 3px;
+      border-radius: 6px;
     }
 
-    /* Style for headings */
+    .site-header {
+      padding: max(28px, env(safe-area-inset-top)) 20px 26px;
+      color: #fff;
+      background:
+        radial-gradient(circle at 92% -10%, rgba(22, 142, 234, .65), transparent 42%),
+        linear-gradient(145deg, #102335, var(--navy-soft));
+    }
+
+    .header-inner, main { width: min(100%, 820px); margin-inline: auto; }
+    .eyebrow {
+      margin: 0 0 8px;
+      color: #8ed0ff;
+      font-size: .76rem;
+      font-weight: 800;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    h1, h2, h3, p { margin-top: 0; }
     h1 {
-      font-size: 24px;
-      margin: 10px 0 20px;
-      color: #222;
-      border-bottom: 2px solid #007bff;
-      padding-bottom: 8px;
+      max-width: 620px;
+      margin-bottom: 10px;
+      font-size: clamp(2rem, 9vw, 3.25rem);
+      line-height: 1.05;
+      letter-spacing: -.035em;
     }
-
     h2 {
-      font-size: 20px;
-      margin: 25px 0 15px;
-      color: #333;
+      margin-bottom: 9px;
+      font-size: clamp(1.45rem, 6vw, 2rem);
+      line-height: 1.2;
+      letter-spacing: -.02em;
     }
+    h3 { margin-bottom: 7px; font-size: 1.08rem; line-height: 1.3; }
+    .intro { max-width: 650px; margin: 0; color: #dceaf4; font-size: 1.06rem; }
 
-    h3 {
-      font-size: 18px;
-      margin: 20px 0 10px;
-      color: #444;
+    .quick-nav {
+      display: flex;
+      gap: 8px;
+      padding: 14px 16px;
+      overflow-x: auto;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: var(--surface);
+      border-bottom: 1px solid var(--line);
+      scrollbar-width: none;
     }
-
-    /* Style for paragraphs */
-    p {
-      margin-bottom: 15px;
-      font-size: 16px;
-    }
-
-    /* Style for images */
-    img {
-      max-width: 100%;
-      height: auto;
-      display: block;
-      margin: 15px auto;
-      border-radius: 4px;
-      border: 1px solid #ddd;
-    }
-
-    /* Style for links */
-    a {
-      color: #007bff;
+    .quick-nav::-webkit-scrollbar { display: none; }
+    .quick-nav a {
+      flex: 0 0 auto;
+      padding: 8px 12px;
+      color: var(--ink);
+      background: #f3f6f8;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      font-size: .88rem;
+      font-weight: 700;
       text-decoration: none;
     }
 
-    a:hover {
-      text-decoration: underline;
+    main { padding: 22px 14px 44px; }
+    section { margin-bottom: 20px; scroll-margin-top: 76px; }
+    .card {
+      padding: 20px;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: 0 8px 24px rgba(20, 40, 58, .06);
     }
+    .section-lead { margin-bottom: 18px; color: var(--muted); }
 
-    /* Style for code blocks */
+    .steps {
+      display: grid;
+      gap: 14px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      counter-reset: steps;
+    }
+    .steps li {
+      min-height: 42px;
+      padding-left: 54px;
+      position: relative;
+      counter-increment: steps;
+    }
+    .steps li::before {
+      content: counter(steps);
+      display: grid;
+      width: 36px;
+      height: 36px;
+      place-items: center;
+      position: absolute;
+      top: 0;
+      left: 0;
+      color: #fff;
+      background: var(--blue);
+      border-radius: 50%;
+      font-weight: 800;
+    }
+    .steps strong { display: block; margin-bottom: 1px; }
+
+    .tip, .note, .warning {
+      padding: 13px 14px;
+      border-radius: 12px;
+      font-size: .94rem;
+    }
+    .tip { margin-top: 18px; color: var(--green); background: var(--green-soft); border-left: 4px solid #35a56f; }
+    .note { margin: 14px 0 0; color: #155a8c; background: var(--blue-soft); border-left: 4px solid var(--blue); }
+    .warning { margin: 14px 0 0; color: var(--amber); background: var(--amber-soft); border-left: 4px solid #e0a122; }
+
+    .media-layout { display: grid; gap: 22px; align-items: start; }
+    figure { margin: 0; }
+    .phone-shot {
+      width: min(100%, 300px);
+      margin-inline: auto;
+      overflow: hidden;
+      background: var(--navy);
+      border: 6px solid #14212c;
+      border-radius: 26px;
+      box-shadow: 0 16px 28px rgba(20, 40, 58, .18);
+    }
+    .phone-shot img { display: block; width: 100%; height: auto; }
+    .phone-shot.room-focus { aspect-ratio: 4 / 5; }
+    .phone-shot.room-focus img { height: 100%; object-fit: cover; object-position: 50% 88%; }
+    figcaption { max-width: 320px; margin: 10px auto 0; color: var(--muted); font-size: .82rem; text-align: center; }
+
+    .feature-grid, .mode-grid { display: grid; gap: 10px; margin: 17px 0; }
+    .feature, .mode { padding: 14px; background: #f7f9fb; border: 1px solid var(--line); border-radius: 12px; }
+    .feature p, .mode p { margin: 4px 0 0; color: var(--muted); font-size: .92rem; }
+    .mini-steps { margin: 12px 0 0; padding-left: 1.25rem; }
+    .mini-steps li + li { margin-top: 8px; }
+
+    details { margin-top: 10px; background: var(--surface); border: 1px solid var(--line); border-radius: 14px; }
+    summary { padding: 16px 48px 16px 16px; position: relative; cursor: pointer; font-weight: 750; list-style: none; }
+    summary::-webkit-details-marker { display: none; }
+    summary::after { content: "+"; position: absolute; top: 11px; right: 16px; color: var(--blue); font-size: 1.55rem; font-weight: 400; }
+    details[open] summary::after { content: "−"; }
+    .details-body { padding: 0 16px 16px; border-top: 1px solid var(--line); }
+    .details-body > :first-child { margin-top: 14px; }
+    .details-body > :last-child { margin-bottom: 0; }
+
     code {
-      background-color: #f5f5f5;
-      padding: 3px 6px;
-      border-radius: 3px;
-      font-family: monospace;
-      font-size: 14px;
-      word-break: break-word;
+      padding: 2px 5px;
+      background: #edf2f5;
+      border-radius: 5px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: .88em;
+      overflow-wrap: anywhere;
     }
 
-    /* Warning message styling */
-    .warning {
-      background-color: #fff3cd;
-      color: #856404;
-      padding: 12px;
-      margin: 15px 0;
-      border-radius: 4px;
-      border-left: 4px solid #ffc107;
-    }
-
-    /* Section styling */
-    section {
-      margin-bottom: 25px;
-    }
-
-    /* Footer */
     footer {
+      padding: 24px 20px calc(28px + env(safe-area-inset-bottom));
+      color: #dceaf4;
+      background: var(--navy);
       text-align: center;
-      padding: 15px 0;
-      margin-top: 30px;
-      border-top: 1px solid #ddd;
-      font-size: 14px;
-      color: #666;
+    }
+    footer p { margin-bottom: 8px; }
+    footer a { color: #8ed0ff; }
+
+    @media (min-width: 680px) {
+      main { padding: 30px 20px 56px; }
+      .card { padding: 28px; }
+      .media-layout { grid-template-columns: minmax(0, 1fr) 260px; }
+      .media-layout.reverse { grid-template-columns: 250px minmax(0, 1fr); }
+      .media-layout.reverse .copy { grid-column: 2; }
+      .media-layout.reverse figure { grid-column: 1; grid-row: 1; }
+      .feature-grid, .mode-grid { grid-template-columns: repeat(3, 1fr); }
     }
 
-    /* Responsive styles */
-    @media screen and (max-width: 600px) {
-      body {
-        font-size: 16px;
-      }
-      
-      h1 {
-        font-size: 22px;
-      }
-      
-      h2 {
-        font-size: 18px;
-      }
-      
-      .container {
-        padding: 15px 10px;
-      }
-    }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
   </style>
 </head>
 <body>
-  <div class="container">
-    <header>
-      <h1>VDO.Ninja Mobile App Guide</h1>
-      <p style="text-align: center; margin-top: 5px;"><a href="https://vdo.ninja" style="font-weight: bold; color: #007bff;">Access web version at vdo.ninja</a></p>
-    </header>
-    
-    <main>
-      <section id="intro">
-        <p>This app is a simplified version of the web-based VDO.Ninja. While it lacks two-way chat support and may offer lower video quality, it provides screen sharing capabilities and a straightforward user experience.</p>
-        <p><strong>Want the full-featured web app instead?</strong> Visit <a href="https://vdo.ninja">https://vdo.ninja</a> in your browser for the complete version with all features.</p>
-      </section>
+  <header class="site-header">
+    <div class="header-inner">
+      <p class="eyebrow">VDO.Ninja Publisher</p>
+      <h1>Mobile app guide</h1>
+      <p class="intro">Publish your phone camera, an Android USB camera, your screen, or just a microphone—then share a link with your viewers.</p>
+    </div>
+  </header>
 
-      <section id="camera-sharing">
-        <h2>Camera Sharing</h2>
-        <p>To share your camera:</p>
-        <p>1. Select your camera from the menu</p>
-        <p>2. The stream ID will auto-generate if left blank, or create your own using alphanumeric characters</p>
-        <p>3. Your stream ID is saved for future sessions</p>
-        <p>4. Click CONNECT to start your camera</p>
-        <p>5. Use the view link at the top of the page to access your video in a browser (link is case-sensitive)</p>
-      </section>
+  <nav class="quick-nav" aria-label="Guide sections">
+    <a href="#quick-start">Quick start</a>
+    <a href="#camera-audio">Camera &amp; audio</a>
+    <a href="#screen-sharing">Screen sharing</a>
+    <a href="#usb">USB devices</a>
+    <a href="#troubleshooting">Help</a>
+    <a href="#more-features">More features</a>
+  </nav>
 
-      <section id="screen-sharing">
-        <h2>Screen Sharing</h2>
-        <p>Follow the same steps as camera sharing, but after clicking Connect:</p>
-        <p>1. You'll see Broadcast source options</p>
-        <p>2. Select the VDO.Ninja Broadcast service (usually the last item)</p>
-        <p>3. If not listed, update to the latest iOS version</p>
-        
-        <div id="outofdate" class="warning" style="display:none;">
-          Your iOS version is out of date and screen sharing may not work. Update to iOS 16 or newer to access this functionality.
+  <main>
+    <section id="quick-start" class="card">
+      <div class="media-layout">
+        <div class="copy">
+          <h2>Go live in four steps</h2>
+          <p class="section-lead">A viewer only needs a modern browser. They do not need to install the app.</p>
+          <ol class="steps">
+            <li><strong>Choose what to share.</strong>Tap a camera, <b>SCREEN</b>, or <b>MICROPHONE ONLY</b>.</li>
+            <li><strong>Check Publishing Settings.</strong>Leave Stream ID empty for a random ID, or enter a memorable one. Select your microphone if needed.</li>
+            <li><strong>Tap CONNECT.</strong>Allow camera, microphone, screen-capture, or USB permissions when asked.</li>
+            <li><strong>Share the Viewer Link.</strong>Use the share button. Keep the app running while you publish.</li>
+          </ol>
+          <div class="tip"><strong>For most streams, that is all you need.</strong> Room name, password, and Advanced Settings are optional.</div>
         </div>
-        
-        <img src="https://github.com/steveseguin/mobile_help_page/assets/2575698/1ec81565-409e-43ae-b0fc-db2662be4e09" alt="Screen sharing settings menu" />
-      </section>
+        <figure>
+          <a href="assets/share-source-menu.png" aria-label="Open the full-size source menu screenshot">
+            <div class="phone-shot"><img src="assets/share-source-menu.png" alt="VDO.Ninja app source menu with screen, camera, and microphone choices" loading="lazy"></div>
+          </a>
+          <figcaption>Choose a source to open Publishing Settings.</figcaption>
+        </figure>
+      </div>
+    </section>
 
-      <section id="screen-sharing">
-        <h2>Things stopping after seconds?</h2>
-        <p>- Disable 'prefer 1080p'</p>
-        <p>- Grant all permissions when prompted</p>
-        <p>- Avoid being in low-power mode</p>
-        <p>- Use Picture-in-Picture mode if available</p>
-      </section>
+    <section id="camera-audio" class="card">
+      <h2>Camera and microphone basics</h2>
+      <div class="feature-grid">
+        <div class="feature"><strong>Choose a camera</strong><p>Use Back Camera for filming away from you, Front Camera for self-view, or Ultra-Wide when available.</p></div>
+        <div class="feature"><strong>Choose a microphone</strong><p>In Publishing Settings, select the phone mic, headset, or connected USB audio input you want to send.</p></div>
+        <div class="feature"><strong>Share the link</strong><p>Viewer links and Stream IDs are case-sensitive. Use the share button to avoid typing mistakes.</p></div>
+      </div>
+      <p>While live, use the microphone and camera buttons to mute tracks, the link button to reopen the Viewer Link, and the red phone button to end the stream. The More menu contains supported options such as camera controls, audio settings, Picture in Picture, torch, and local recording.</p>
+    </section>
 
-      <section id="obs-integration">
-        <h2>OBS Integration</h2>
-        <p>To load your stream in OBS:</p>
-        <p>1. Add your view link to an OBS browser source</p>
-        <p>2. Click "Control audio via OBS" when configuring</p>
-        <p>3. Set the browser source to 1920x1080 resolution</p>
-      </section>
+    <section id="screen-sharing" class="card">
+      <h2>Share your screen</h2>
+      <p>Tap <strong>SCREEN</strong>, review Publishing Settings, then tap <strong>CONNECT</strong>.</p>
+      <details>
+        <summary>iPhone or iPad steps</summary>
+        <div class="details-body">
+          <ol class="mini-steps">
+            <li>In the iOS broadcast picker, select the <strong>VDO.Ninja Broadcast</strong> service.</li>
+            <li>Start the broadcast and return to the content you want to share.</li>
+            <li>Use iOS 16 or newer. Keep Low Power Mode off if broadcasting stops unexpectedly.</li>
+          </ol>
+        </div>
+      </details>
+      <details>
+        <summary>Android steps</summary>
+        <div class="details-body">
+          <p>Approve Android's screen-capture confirmation. If system audio or microphone narration is enabled in Publishing Settings, also grant the requested audio permissions.</p>
+        </div>
+      </details>
+    </section>
 
-      <section id="audio-limitations">
-        <h2>iOS Audio Limitations</h2>
-        <p>USB audio support is limited. Official TRRS 3.5mm to Lightning/USB adapters may work on iOS, as well as wireless headsets, but many generic audio devices are not supported currently. See <a href="https://www.youtube.com/watch?v=BBus_S8iJUE">this video </a> for more details.</p>
-        
-        <h3>Android Users</h3>
-        <p>Firefox on Android supports USB audio when accessing VDO.Ninja via the web. Additionally, there is an alternative app version that supports HDMI / UVC support via USB: <a href="https://drive.google.com/file/d/1L8meslXPEzivocH3wz48abNtJ926hQUr/view?usp=drive_link">Download Android Version</a></p>
-      </section>
+    <section id="usb" class="card">
+      <h2>Android USB camera and audio</h2>
+      <p class="section-lead">The Android app supports many USB-C UVC cameras and compatible USB audio devices. USB camera capture is not available in the iOS app.</p>
+      <ol class="mini-steps">
+        <li>Connect the UVC camera to the Android phone, using a powered hub if the camera needs more power.</li>
+        <li>Accept the Android USB permission prompt. A <strong>USB CAMERA</strong> option should appear automatically on the app home screen.</li>
+        <li>Tap <strong>USB CAMERA</strong>. In Publishing Settings, choose the USB microphone if it appears and you want to use it.</li>
+        <li>Tap <strong>CONNECT</strong> and share the Viewer Link.</li>
+      </ol>
+      <div class="note">If the USB option does not appear, unplug and reconnect the device, accept the permission prompt, and wait a few seconds for the device list to refresh.</div>
+    </section>
 
-      <section id="customization">
-        <h2>Customizing Playback</h2>
-        <p>Modify VDO.Ninja URL links with parameters to customize playback without additional software:</p>
-        
-        <h3>Parameter Examples</h3>
-        <p>Basic view link: <code>https://vdo.ninja/?view=xxxxxxx</code></p>
-        <p>With bitrate: <code>https://vdo.ninja/?view=xxxxxxx&bitrate=500</code></p>
-        <p>With multiple parameters: <code>https://vdo.ninja/?view=xxxxxxx&bitrate=500&audiobitrate=65</code></p>
-        
-        <h3>Common Parameters</h3>
-        <p><code>&audiobitrate</code>: Improves audio quality at the cost of bandwidth (great for podcasting)</p>
-        <p><code>&bitrate=500</code>: Sets video bitrate to 500kbps (default is 2500kbps, can go up to 70000kbps)</p>
-        
-        <h3>Stream IDs</h3>
-        <p>Create and reuse stream IDs (like "studio1" or "camera2") with these guidelines:</p>
-        <p>- Use <code>&push=STREAMID</code> to publish video</p>
-        <p>- Use <code>&view=STREAMID</code> to view remotely</p>
-        <p>- Keep IDs under 31 characters and alphanumeric only</p>
-        <p>- Ensure the ID isn't already in use</p>
-        
-        <p>For more options, visit the <a href="https://docs.vdo.ninja/">VDO.Ninja documentation</a>.</p>
-      </section>
-    </main>
-    
-    <footer>
-      <p>Visit <a href="https://vdo.ninja">VDO.Ninja</a> for the full web version</p>
-      <p><strong>Need help?</strong> Free support is available on <a href="https://discord.vdo.ninja">Discord</a></p>
-    </footer>
-  </div>
+    <section id="troubleshooting" class="card">
+      <h2>Quick fixes</h2>
+      <details open>
+        <summary>The stream stops or will not start</summary>
+        <div class="details-body">
+          <ul class="mini-steps">
+            <li>Grant every requested camera, microphone, screen, or USB permission.</li>
+            <li>Turn off Low Power Mode or battery optimization for the app.</li>
+            <li>Try a lower video-quality setting and a stable Wi-Fi or wired connection.</li>
+            <li>On iOS, use Picture in Picture when switching to another app.</li>
+          </ul>
+        </div>
+      </details>
+      <details>
+        <summary>The viewer cannot see or hear the stream</summary>
+        <div class="details-body">
+          <ul class="mini-steps">
+            <li>Send the Viewer Link with the share button; IDs and room names are case-sensitive.</li>
+            <li>Confirm your live microphone or camera button is not muted.</li>
+            <li>Ask the viewer to allow playback and check their device volume.</li>
+            <li>Try a different network if a firewall or restrictive Wi-Fi blocks WebRTC.</li>
+          </ul>
+        </div>
+      </details>
+    </section>
 
-  <script>
-  function safariVersion() {
-    var ver = 0;
-    try {
-      ver = navigator.appVersion.split("Version/");
-      if (ver.length > 1) {
-        ver = ver[1].split(" Safari");
-      }
-      if (ver.length > 1) {
-        ver = ver[0].split(".");
-      }
-      if (ver.length > 1) {
-        ver = parseInt(ver[0]);
-      } else {
-        ver = 0;
-      }
-    } catch (e) {
-      return 0;
-    }
-    return ver;
-  }
-  
-  if (safariVersion() && (safariVersion() < 16)) {
-    document.getElementById("outofdate").style.display = "block";
-  }
-  </script>
+    <section id="more-features" class="card">
+      <h2>Optional features</h2>
+      <p class="section-lead">Open these only when you need more than a basic one-way stream.</p>
+
+      <details id="room-audio">
+        <summary>Talk with guests using Room Audio</summary>
+        <div class="details-body">
+          <div class="media-layout reverse">
+            <div class="copy">
+              <p>Room Audio controls whose audio the app plays back to you while your outgoing camera or microphone continues normally.</p>
+              <h3>For a group conversation</h3>
+              <ol class="mini-steps">
+                <li>Enter the same <strong>Room name</strong> the other participants will use.</li>
+                <li>Turn on <strong>Advanced Settings</strong>. Under <strong>Incoming Audio</strong>, choose <strong>Everyone in room</strong>.</li>
+                <li>Leave <strong>Enable Echo Cancellation</strong> on, especially when using the phone speaker.</li>
+                <li>Tap <strong>CONNECT</strong>. Guests can open <code>https://vdo.ninja/?room=YOUR_ROOM_NAME</code>, join the room, and allow their microphone.</li>
+              </ol>
+              <div class="mode-grid">
+                <div class="mode"><strong>Off</strong><p>Publish only. You will not hear remote audio.</p></div>
+                <div class="mode"><strong>One stream</strong><p>Hear one publisher by entering their Remote Stream ID.</p></div>
+                <div class="mode"><strong>Everyone in room</strong><p>Hear all active publishers in your room.</p></div>
+              </div>
+              <div class="note"><strong>Need silence?</strong> While live, tap the <b>Room audio</b> or <b>Listening</b> badge to mute or unmute all incoming audio. Its number shows how many room audio streams are connected.</div>
+              <div class="warning"><strong>Avoid feedback:</strong> use headphones when possible. If the app warns that Unprocessed Audio disables echo cancellation, tap <b>Enable conversational audio</b>.</div>
+            </div>
+            <figure>
+              <a href="assets/room-audio-settings.png" aria-label="Open the full-size Room Audio settings screenshot">
+                <div class="phone-shot room-focus"><img src="assets/room-audio-settings.png" alt="Incoming Audio settings set to Everyone in room with echo cancellation enabled" loading="lazy"></div>
+              </a>
+              <figcaption>Room Audio is inside Advanced Settings. Tap the image for the full screen.</figcaption>
+            </figure>
+          </div>
+        </div>
+      </details>
+
+      <details>
+        <summary>Use the stream in OBS</summary>
+        <div class="details-body">
+          <ol class="mini-steps">
+            <li>Add the Viewer Link as an OBS Browser Source.</li>
+            <li>Enable <strong>Control audio via OBS</strong> in the Browser Source properties.</li>
+            <li>Set the source size to match your production, commonly 1920×1080.</li>
+          </ol>
+        </div>
+      </details>
+
+      <details>
+        <summary>Viewer-link options</summary>
+        <div class="details-body">
+          <p>Add URL parameters with <code>&amp;</code>. For example, <code>&amp;bitrate=500</code> requests a 500-kbps video bitrate and <code>&amp;audiobitrate=65</code> requests higher-quality audio.</p>
+          <p>Stream IDs and room names are case-sensitive. Use long, hard-to-guess names for private sessions.</p>
+          <p>See the <a href="https://docs.vdo.ninja/">complete VDO.Ninja documentation</a> for more parameters.</p>
+        </div>
+      </details>
+    </section>
+  </main>
+
+  <footer>
+    <p><strong>Need more help?</strong> Free support is available on <a href="https://discord.vdo.ninja">Discord</a>.</p>
+    <p>For the full browser experience, visit <a href="https://vdo.ninja">vdo.ninja</a>.</p>
+  </footer>
 </body>
 </html>

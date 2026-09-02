@@ -1,4 +1,7 @@
-# mobile_help_page
-help page for the vdo.ninja native apps
+# VDO.Ninja mobile help page
 
-![image](https://github.com/steveseguin/mobile_help_page/assets/2575698/1ec81565-409e-43ae-b0fc-db2662be4e09)
+Mobile-first help page used by the VDO.Ninja Android and iOS apps.
+
+The screenshots in `assets/` are captured from the Android app. Keep the written
+instructions platform-neutral unless a section is explicitly labelled Android or
+iOS.
